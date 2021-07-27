@@ -20,7 +20,4 @@ Route::get('/', function () {
 
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/', function () {
-    return ('welcome2');
-});
 Route::get('/ServiciosProductos/create', [App\Http\Controllers\ServicioProductoController::class, 'create']);
