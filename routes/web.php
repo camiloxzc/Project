@@ -17,7 +17,9 @@ use App\Http\Controllers\ServicioProductoController;
 Route::get('/', function () {
     return view('welcome2');
 });
-
+Route::get('/', function () {
+    return view('welcome2');
+});
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/ServiciosProductos/create', [App\Http\Controllers\ServicioProductoController::class, 'create']);
