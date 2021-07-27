@@ -57,6 +57,15 @@
                   @endif
                 </div>
               </div>
+               <div class="row">
+                <label for="name" class="col-sm-2 col-form-label">Nombre</label>
+                <div class="col-sm-7">
+                  <input type="text" class="form-control" name="name" placeholder="Ingrese su nombre" value="{{ old('name') }}" autofocus>
+                  @if ($errors->has('name'))
+                    <span class="error text-danger" for="input-name">{{ $errors->first('name') }}</span>
+                  @endif
+                </div>
+              </div>
               <div class="row">
                 <label for="roles" class="col-sm-2 col-form-label">Roles</label>
                 <div class="col-sm-7">
