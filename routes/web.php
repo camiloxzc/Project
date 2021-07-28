@@ -17,6 +17,41 @@ use App\Http\Controllers\ServicioProductoController;
 Route::get('/', function () {
     return view('welcome2');
 });
-/*modulo producto*/
+
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+/*rutas producto*/
 Route::get('/ServiciosProductos/create', [App\Http\Controllers\ServicioProductoController::class, 'create']);
+
+
+/*rutas roles*/
+
+
+/*rutas servicios*/
+
+
+
+/*rutas agenda*/
+
+
+
+/*rutas usuario*/
+
+
+
+/*rutas profesionales*/
+
+
+
+/*rutas clientes*/
+
+
+
+/*rutas proveedores*/
+
+
+
+/*rutas compras*/
+
+
+
+/*rutas ventas*/

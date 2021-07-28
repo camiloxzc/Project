@@ -19,68 +19,80 @@
       </li>
       <li class="nav-item{{ $activePage == '#' ? ' active' : '' }}">
         <a class="nav-link" href="{{ route('home') }}">
-          <i class="material-icons">dashboard</i>
+          <i class="material-icons">manage_accounts</i>
             <p>{{ __('Roles') }}</p>
         </a>
       </li>
-      <li class="nav-item {{ ($activePage == 'profile' || $activePage == 'user-management') ? ' active' : '' }}">
+      <li class="nav-item {{ ($activePage == 'Usuarios' || $activePage == 'Profesionales' || $activePage == 'Clientes') ? ' active' : '' }}">
         <a class="nav-link" data-toggle="collapse" href="#laravelExample" aria-expanded="true">
-          <i><img style="width:25px" src="{{ asset('img/laravel.svg') }}"></i>
+            <i class="material-icons">account_box</i>
           <p>{{ __('Usuarios') }}
             <b class="caret"></b>
           </p>
         </a>
         <div class="collapse" id="laravelExample">
           <ul class="nav">
-            <li class="nav-item{{ $activePage == 'profile' ? ' active' : '' }}">
+            <li class="nav-item{{ $activePage == 'Profesionales' ? ' active' : '' }}">
               <a class="nav-link" href="#">
-                <span class="sidebar-mini"> UP </span>
-                <span class="sidebar-normal">{{ __('Profesionles') }} </span>
+                <i class="material-icons">arrow_right</i>
+                <span class="sidebar-normal">{{ __('Profesionales') }} </span>
               </a>
             </li>
-            <li class="nav-item{{ $activePage == 'user-management' ? ' active' : '' }}">
+            <li class="nav-item{{ $activePage == 'Clientes' ? ' active' : '' }}">
               <a class="nav-link" href="#">
-                <span class="sidebar-mini"> UM </span>
+                <i class="material-icons">arrow_right</i>
                 <span class="sidebar-normal"> {{ __('Clientes') }} </span>
               </a>
             </li>
           </ul>
         </div>
       </li>
-      <li class="nav-item{{ $activePage == 'table' ? ' active' : '' }}">
+      <li class="nav-item{{ $activePage == 'Agenda' ? ' active' : '' }}">
         <a class="nav-link" href="#">
-          <i class="material-icons">content_paste</i>
+          <i class="material-icons">today</i>
             <p>{{ __('Agenda') }}</p>
         </a>
       </li>
       <li class="nav-item{{ $activePage == 'typography' ? ' active' : '' }}">
         <a class="nav-link" href="#">
-          <i class="material-icons">library_books</i>
-            <p>{{ __('Typography') }}</p>
+          <i class="material-icons">date_range</i>
+            <p>{{ __('Horarios') }}</p>
         </a>
       </li>
       <li class="nav-item{{ $activePage == 'icons' ? ' active' : '' }}">
         <a class="nav-link" href="#">
           <i class="material-icons">bubble_chart</i>
-          <p>{{ __('Icons') }}</p>
+          <p>{{ __('Servicios') }}</p>
         </a>
       </li>
       <li class="nav-item{{ $activePage == 'map' ? ' active' : '' }}">
         <a class="nav-link" href="#">
-          <i class="material-icons">location_ons</i>
-            <p>{{ __('Maps') }}</p>
+          <i class="material-icons">post_add</i>
+            <p>{{ __('Solicitud') }}</p>
+        </a>
+      </li>
+      <li class="nav-item{{ $activePage == 'map' ? ' active' : '' }}">
+        <a class="nav-link" href="#">
+          <i class="material-icons">assignment_ind</i>
+            <p>{{ __('Proveedor') }}</p>
+        </a>
+      </li>
+      <li class="nav-item{{ $activePage == 'map' ? ' active' : '' }}">
+        <a class="nav-link" href="#">
+          <i class="material-icons">shopping_bag</i>
+            <p>{{ __('Compras') }}</p>
         </a>
       </li>
       <li class="nav-item{{ $activePage == 'notifications' ? ' active' : '' }}">
         <a class="nav-link" href="#">
           <i class="material-icons">notifications</i>
-          <p>{{ __('Notifications') }}</p>
+          <p>{{ __('Productos') }}</p>
         </a>
       </li>
       <li class="nav-item{{ $activePage == 'language' ? ' active' : '' }}">
         <a class="nav-link" href="#">
           <i class="material-icons">language</i>
-          <p>{{ __('RTL Support') }}</p>
+          <p>{{ __('Ventas') }}</p>
         </a>
       </li>
       {{--<li class="nav-item active-pro{{ $activePage == 'upgrade' ? ' active' : '' }}">
