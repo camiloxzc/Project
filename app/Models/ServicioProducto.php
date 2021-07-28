@@ -18,4 +18,6 @@ class ServicioProducto extends Model
         'idcategoria',
         'iddetalleserviciousuario',
     ];
+    protected $primaryKey = 'idservicioproducto';
+    public $timestamps = false;
 }

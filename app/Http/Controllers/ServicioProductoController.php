@@ -87,10 +87,11 @@ class ServicioProductoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ServicioProducto $ServiciosProductos)
+    public function destroy($idservicioproducto)
     {
         //
-        $ServiciosProductos->delete();
+        $idservicioproducto=ServicioProducto::find($idservicioproducto);
+        $idservicioproducto->delete();
 
         return back();
     }

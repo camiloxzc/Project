@@ -13,7 +13,7 @@ class CreateServiciosproductosTable extends Migration
      */
     public function up()
     {
-        Schema::create('serviciosproductos', function (Blueprint $table) {
+        Schema::create('servicio_productos', function (Blueprint $table) {
             $table->id('idservicioproducto');
             $table->string('nombre');
             $table->text('descripcion');
