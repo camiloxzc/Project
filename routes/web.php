@@ -20,11 +20,23 @@ Route::get('/', function () {
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 /*rutas producto*/
-Route::get('/ServiciosProductos/create', [App\Http\Controllers\ServicioProductoController::class, 'create']);
+/*Route::get('/ServiciosProductos/create', [App\Http\Controllers\ServicioProductoController::class, 'create']);*/
+Route::group(['middleware' => 'auth'], function(){
+    Route::resource('ServiciosProductos',ServicioProductoController::class);
+    Route::post('/ServiciosProductos', [App\Http\Controllers\ServicioProductoController::class, 'store'])->name('ServiciosProductos.store');
+});
 
+/*rutas permisos*/
+Route::group(['middleware' => 'auth'], function(){
+    Route::resource('permissions', App\Http\Controllers\PermissionController::class);
+
+});
 
 /*rutas roles*/
+Route::group(['middleware' => 'auth'], function(){
+    Route::resource('roles', App\Http\Controllers\RoleController::class);
 
+});
 
 /*rutas servicios*/
 

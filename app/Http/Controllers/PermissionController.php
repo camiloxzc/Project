@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\ServicioProducto;
+use Spatie\Permission\Models\Permission;
 
-class ServicioProductoController extends Controller
+class PermissionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,6 +15,9 @@ class ServicioProductoController extends Controller
     public function index()
     {
         //
+        $permissions = Permission::paginate(10);
+
+        return view('permissions.index', compact('permissions'));
     }
 
     /**
@@ -24,7 +27,8 @@ class ServicioProductoController extends Controller
      */
     public function create()
     {
-        return view('ServiciosProductos.create');
+        //
+        return view('permissions.create');
     }
 
     /**
@@ -35,8 +39,10 @@ class ServicioProductoController extends Controller
      */
     public function store(Request $request)
     {
-        ServicioProducto::create($request->all());
-        return redirect()->back();
+        //
+        Permission::create($request->only('name'));
+
+        return redirect()->route('permissions.index');
     }
 
     /**
@@ -45,9 +51,10 @@ class ServicioProductoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Permission $permission)
     {
         //
+        return view('permissions.show', compact('permission'));
     }
 
     /**
@@ -56,9 +63,10 @@ class ServicioProductoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Permission $permission)
     {
         //
+        return view('permissions.edit', compact('permission'));
     }
 
     /**
@@ -68,9 +76,12 @@ class ServicioProductoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request,Permission $permission)
     {
         //
+        $permission->update($request->only('name'));
+
+        return redirect()->route('permissions.index');
     }
 
     /**
@@ -79,8 +90,11 @@ class ServicioProductoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Permission $permission)
     {
         //
+        $permission->delete();
+
+        return redirect()->route('permissions.index');
     }
 }

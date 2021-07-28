@@ -17,8 +17,14 @@
             <p>{{ __('Inicio') }}</p>
         </a>
       </li>
-      <li class="nav-item{{ $activePage == '#' ? ' active' : '' }}">
-        <a class="nav-link" href="{{ route('home') }}">
+      <li class="nav-item{{ $activePage == 'permissions' ? ' active' : '' }}">
+        <a class="nav-link" href="{{ route('permissions.index') }}">
+          <i class="material-icons">manage_accounts</i>
+            <p>{{ __('Permisos') }}</p>
+        </a>
+      </li>
+      <li class="nav-item{{ $activePage == 'roles' ? ' active' : '' }}">
+        <a class="nav-link" href="{{ route('roles.index') }}">
           <i class="material-icons">manage_accounts</i>
             <p>{{ __('Roles') }}</p>
         </a>

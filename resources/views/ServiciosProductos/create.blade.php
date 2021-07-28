@@ -4,7 +4,7 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-12">
-        <form action="#" method="post" class="form-horizontal">
+        <form action="{{route('ServiciosProductos.store')}}" method="post" class="form-horizontal">
           @csrf
           <div class="card">
             <div class="card-header card-header-primary">
@@ -22,52 +22,43 @@
                   </div>
               @endif --}}
               <div class="row">
-                <label for="name" class="col-sm-2 col-form-label">Nombre</label>
+                <label for="nombre" class="col-sm-2 col-form-label">Nombre</label>
                 <div class="col-sm-7">
-                  <input type="text" class="form-control" name="name" placeholder="Ingrese su nombre" value="{{ old('name') }}" autofocus>
-                  @if ($errors->has('name'))
-                    <span class="error text-danger" for="input-name">{{ $errors->first('name') }}</span>
+                  <input type="text" class="form-control" name="nombre" placeholder="Ingrese su nombre" value="{{ old('nombre') }}" autofocus>
+                  @if ($errors->has('nombre'))
+                    <span class="error text-danger" for="input-nombre">{{ $errors->first('nombre') }}</span>
                   @endif
                 </div>
               </div>
               <div class="row">
-                <label for="username" class="col-sm-2 col-form-label">Nombre de usuario</label>
+                <label for="descripcion" class="col-sm-2 col-form-label">Descripción</label>
                 <div class="col-sm-7">
-                  <input type="text" class="form-control" name="username" placeholder="Ingrese su nombre de usuario" value="{{ old('username') }}">
-                  @if ($errors->has('username'))
-                    <span class="error text-danger" for="input-username">{{ $errors->first('username') }}</span>
+                  <input type="text" class="form-control" name="descripcion" placeholder="Ingrese una descripcion" >
+                  @if ($errors->has('descripcion'))
+                    <span class="error text-danger" for="input-descripcion">{{ $errors->first('descripcion') }}</span>
                   @endif
                 </div>
               </div>
               <div class="row">
-                <label for="email" class="col-sm-2 col-form-label">Correo</label>
+                <label for="precio" class="col-sm-2 col-form-label">Precio</label>
                 <div class="col-sm-7">
-                  <input type="email" class="form-control" name="email" placeholder="Ingrese su correo" value="{{ old('email') }}">
-                  @if ($errors->has('email'))
-                    <span class="error text-danger" for="input-email">{{ $errors->first('email') }}</span>
+                  <input type="text" class="form-control" name="precio" placeholder="Ingrese el precio" >
+                  @if ($errors->has('precio'))
+                    <span class="error text-danger" for="input-precio">{{ $errors->first('precio') }}</span>
                   @endif
                 </div>
               </div>
               <div class="row">
-                <label for="password" class="col-sm-2 col-form-label">Contraseña</label>
+                <label for="cantidad" class="col-sm-2 col-form-label">Cantidad</label>
                 <div class="col-sm-7">
-                  <input type="password" class="form-control" name="password" placeholder="Contraseña">
-                  @if ($errors->has('password'))
-                    <span class="error text-danger" for="input-password">{{ $errors->first('password') }}</span>
-                  @endif
-                </div>
-              </div>
-               <div class="row">
-                <label for="name" class="col-sm-2 col-form-label">Nombre</label>
-                <div class="col-sm-7">
-                  <input type="text" class="form-control" name="name" placeholder="Ingrese su nombre" value="{{ old('name') }}" autofocus>
-                  @if ($errors->has('name'))
-                    <span class="error text-danger" for="input-name">{{ $errors->first('name') }}</span>
+                  <input type="text" class="form-control" name="cantidad" placeholder="Ingrese cantidad" >
+                  @if ($errors->has('cantidad'))
+                    <span class="error text-danger" for="input-cantidad">{{ $errors->first('cantidad') }}</span>
                   @endif
                 </div>
               </div>
               <div class="row">
-                <label for="roles" class="col-sm-2 col-form-label">Roles</label>
+                {{--<label for="roles" class="col-sm-2 col-form-label">Roles</label>--}}
                 <div class="col-sm-7">
                     <div class="form-group">
                         <div class="tab-content">

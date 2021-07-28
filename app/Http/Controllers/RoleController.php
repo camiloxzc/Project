@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\ServicioProducto;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 
-class ServicioProductoController extends Controller
+class RoleController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,6 +16,9 @@ class ServicioProductoController extends Controller
     public function index()
     {
         //
+        $roles = Role::paginate(10);
+
+        return view('roles.index', compact('roles'));
     }
 
     /**
@@ -24,7 +28,10 @@ class ServicioProductoController extends Controller
      */
     public function create()
     {
-        return view('ServiciosProductos.create');
+        //
+        $permissions = Permission::all()->pluck('name', 'id');
+
+        return view('roles.create', compact('permissions'));
     }
 
     /**
@@ -35,8 +42,12 @@ class ServicioProductoController extends Controller
      */
     public function store(Request $request)
     {
-        ServicioProducto::create($request->all());
-        return redirect()->back();
+        //
+        $role = Role::create($request->only('name'));
+
+        $role->permissions()->sync($request->input('permissions', []));
+
+        return redirect()->route('roles.index');
     }
 
     /**
@@ -45,9 +56,11 @@ class ServicioProductoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Role $role)
     {
         //
+        $role->load('permissions');
+        return view('roles.show', compact('role'));
     }
 
     /**
@@ -56,9 +69,13 @@ class ServicioProductoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Role $role)
     {
         //
+        $permissions = Permission::all()->pluck('name', 'id');
+        $role->load('permissions');
+        // dd($role);
+        return view('roles.edit', compact('role', 'permissions'));
     }
 
     /**
@@ -68,9 +85,14 @@ class ServicioProductoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Role $role)
     {
         //
+        $role->update($request->only('name'));
+
+        $role->permissions()->sync($request->input('permissions', []));
+
+        return redirect()->route('roles.index');
     }
 
     /**
@@ -79,8 +101,11 @@ class ServicioProductoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Role $role)
     {
         //
+        $role->delete();
+
+        return redirect()->route('roles.index');
     }
 }
