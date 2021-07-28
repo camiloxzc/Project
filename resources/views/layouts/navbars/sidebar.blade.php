@@ -89,8 +89,8 @@
             <p>{{ __('Compras') }}</p>
         </a>
       </li>
-      <li class="nav-item{{ $activePage == 'notifications' ? ' active' : '' }}">
-        <a class="nav-link" href="#">
+      <li class="nav-item{{ $activePage == 'Productos' ? ' active' : '' }}">
+        <a class="nav-link" href="{{route('ServiciosProductos.index')}}">
           <i class="material-icons">notifications</i>
           <p>{{ __('Productos') }}</p>
         </a>

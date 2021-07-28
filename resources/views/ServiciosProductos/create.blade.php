@@ -58,6 +58,33 @@
                 </div>
               </div>
               <div class="row">
+                <label for="estado" class="col-sm-2 col-form-label">estado</label>
+                <div class="col-sm-7">
+                  <input type="text" class="form-control" name="estado" placeholder="Ingrese estado" >
+                  @if ($errors->has('estado'))
+                    <span class="error text-danger" for="input-estado">{{ $errors->first('estado') }}</span>
+                  @endif
+                </div>
+              </div>
+              <div class="row">
+                <label for="idcategoria" class="col-sm-2 col-form-label">Id Categoria</label>
+                <div class="col-sm-7">
+                  <input type="text" class="form-control" name="idcategoria" placeholder="Ingrese idcategoria" >
+                  @if ($errors->has('idcategoria'))
+                    <span class="error text-danger" for="input-idcategoria">{{ $errors->first('idcategoria') }}</span>
+                  @endif
+                </div>
+              </div>
+              <div class="row">
+                <label for="iddetalleserviciousuario" class="col-sm-2 col-form-label">iddetalleserviciousuario</label>
+                <div class="col-sm-7">
+                  <input type="text" class="form-control" name="iddetalleserviciousuario" placeholder="Ingrese iddetalleserviciousuario" >
+                  @if ($errors->has('iddetalleserviciousuario'))
+                    <span class="error text-danger" for="input-iddetalleserviciousuario">{{ $errors->first('iddetalleserviciousuario') }}</span>
+                  @endif
+                </div>
+              </div>
+              <div class="row">
                 {{--<label for="roles" class="col-sm-2 col-form-label">Roles</label>--}}
                 <div class="col-sm-7">
                     <div class="form-group">

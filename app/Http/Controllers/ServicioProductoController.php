@@ -15,6 +15,9 @@ class ServicioProductoController extends Controller
     public function index()
     {
         //
+        $ServiciosProductos = ServicioProducto::paginate(10);
+
+        return view('ServiciosProductos.index', compact('ServiciosProductos'));
     }
 
     /**
@@ -36,7 +39,7 @@ class ServicioProductoController extends Controller
     public function store(Request $request)
     {
         ServicioProducto::create($request->all());
-        return redirect()->back();
+        return redirect()->route('ServiciosProductos.index');
     }
 
     /**
@@ -45,9 +48,10 @@ class ServicioProductoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(ServicioProducto $ServicioProducto)
     {
         //
+        return view('ServiciosProductos.show', compact('ServicioProducto'));
     }
 
     /**
@@ -56,9 +60,10 @@ class ServicioProductoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(ServicioProducto $ServicioProducto)
     {
         //
+        return view('ServiciosProductos.edit', compact('ServicioProducto'));
     }
 
     /**
@@ -68,9 +73,12 @@ class ServicioProductoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $ServicioProducto)
     {
         //
+        $ServicioProducto->update();
+
+        return redirect()->route('ServiciosProductos.index');
     }
 
     /**
@@ -79,8 +87,11 @@ class ServicioProductoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(ServicioProducto $ServiciosProductos)
     {
         //
+        $ServiciosProductos->delete();
+
+        return back();
     }
 }

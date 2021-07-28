@@ -23,7 +23,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 /*Route::get('/ServiciosProductos/create', [App\Http\Controllers\ServicioProductoController::class, 'create']);*/
 Route::group(['middleware' => 'auth'], function(){
     Route::resource('ServiciosProductos',ServicioProductoController::class);
-    Route::post('/ServiciosProductos', [App\Http\Controllers\ServicioProductoController::class, 'store'])->name('ServiciosProductos.store');
+    /*Route::post('/ServiciosProductos', [App\Http\Controllers\ServicioProductoController::class, 'store'])->name('ServiciosProductos.store');*/
 });
 
 /*rutas permisos*/

@@ -14,5 +14,8 @@ class ServicioProducto extends Model
         'descripcion',
         'precio',
         'cantidad',
+        'estado',
+        'idcategoria',
+        'iddetalleserviciousuario',
     ];
 }
