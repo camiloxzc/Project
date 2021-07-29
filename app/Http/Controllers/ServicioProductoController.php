@@ -60,10 +60,10 @@ class ServicioProductoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(ServicioProducto $ServicioProducto)
+    public function edit($idservicioproducto)
     {
-        //
-        return view('ServiciosProductos.edit', compact('ServicioProducto'));
+        $ServicioProducto = ServicioProducto::find($idservicioproducto);
+        return view('ServiciosProductos.edit')->with('ServicioProducto',$ServicioProducto);
     }
 
     /**
@@ -73,9 +73,18 @@ class ServicioProductoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ServicioProducto $ServicioProducto)
+    public function update(Request $request,$idservicioproducto)
     {
-        //
+         //Buscar registro de la tabla
+         $ServicioProducto = ServicioProducto::find($idservicioproducto);
+         //Actualizar datos  de los atributos a editar
+         $ServicioProducto->nombre = $request->nombre;
+         $ServicioProducto->descripcion = $request->descripcion;
+         $ServicioProducto->precio = $request->precio;
+         $ServicioProducto->cantidad = $request->cantidad;
+         $ServicioProducto->estado = $request->estado;
+         $ServicioProducto->idcategoria = $request->idcategoria;
+         $ServicioProducto->iddetalleserviciousuario = $request->iddetalleserviciousuario;
         $ServicioProducto->update();
 
         return redirect()->route('ServiciosProductos.index');

@@ -33,7 +33,7 @@
                   </div>
                   <div class="card-footer">
                     <div class="button-container">
-                      <button class="btn btn-sm btn-primary">Editar</button>
+                      <a href="/ServiciosProductos/{{$ServicioProducto->idservicioproducto}}"><button class="btn btn-sm btn-primary">Editar</button></a>
                     </div>
                   </div>
                 </div>
