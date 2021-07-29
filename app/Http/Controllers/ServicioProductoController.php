@@ -48,10 +48,11 @@ class ServicioProductoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(ServicioProducto $ServicioProducto)
+    public function show($idservicioproducto)
     {
         //
-        return view('ServiciosProductos.show', compact('ServicioProducto'));
+        $ServicioProducto = ServicioProducto::find($idservicioproducto);
+        return view('ServiciosProductos.show')->with('ServicioProducto',$ServicioProducto);
     }
 
     /**
