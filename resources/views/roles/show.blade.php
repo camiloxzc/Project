@@ -45,7 +45,7 @@
                   </div>
                   <div class="card-footer">
                     <div class="button-container">
-                      <button type="submit" class="btn btn-sm btn-primary">Editar</button>
+                      <a href="{{ route('roles.edit', $role->id) }}"><button type="submit" class="btn btn-sm btn-primary">Editar</button></a>
                     </div>
                   </div>
                 </div>

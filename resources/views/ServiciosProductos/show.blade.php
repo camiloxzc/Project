@@ -19,7 +19,7 @@
                       <div class="author">
                         <a href="#">
                           <img src="{{ asset('/img/mask.png') }}" alt="image" class="avatar">
-                          <h5 class="title mt-3">{{ $ServicioProducto->nombre }}</h5>
+                          <h5 class="title mt-3">Producto: {{ $ServicioProducto->nombre }}</h5>
                         </a>
                         <p class="description">
                         {{ $ServicioProducto->precio }} <br>
