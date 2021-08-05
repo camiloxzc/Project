@@ -20,8 +20,8 @@ class CreateServiciosproductosTable extends Migration
             $table->decimal('precio');
             $table->string('cantidad');
             $table->boolean('estado');
-            $table->string('idcategoria');
-            $table->string('iddetalleserviciousuario');
+            $table->integer('idcategoria');
+            $table->integer('iddetalleserviciousuario');
             $table->timestamps();
         });
     }

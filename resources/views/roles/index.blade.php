@@ -21,7 +21,6 @@
                 <thead class="text-primary">
                   <th> ID </th>
                   <th> Nombre </th>
-                  <th> Guard </th>
                   <th> Fecha de creación </th>
                   <th> Permisos </th>
                   <th class="text-right"> Acciones </th>
@@ -31,7 +30,6 @@
                   <tr>
                     <td>{{ $role->id }}</td>
                     <td>{{ $role->name }}</td>
-                    <td>{{ $role->guard_name }}</td>
                     <td class="text-primary">{{ $role->created_at->toFormattedDateString() }}</td>
                     <td>
                       @forelse ($role->permissions as $permission)

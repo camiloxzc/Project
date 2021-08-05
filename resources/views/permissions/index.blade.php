@@ -23,7 +23,6 @@
                       <thead class="text-primary">
                         <th>ID</th>
                         <th>Nombre</th>
-                        <th>Guard</th>
                         <th> Fecha de creación </th>
                         <th class="text-right">Acciones</th>
                       </thead>
@@ -32,7 +31,6 @@
                         <tr>
                           <td>{{ $permission->id }}</td>
                           <td>{{ $permission->name }}</td>
-                          <td>{{ $permission->guard_name }}</td>
                           <td class="text-primary">{{ $permission->created_at->toFormattedDateString() }}</td>
                           <td class="td-actions text-right">
                             <a href="{{ route('permissions.show', $permission->id) }}" class="btn btn-info"><i
