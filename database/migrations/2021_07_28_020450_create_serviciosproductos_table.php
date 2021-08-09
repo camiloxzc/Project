@@ -33,6 +33,6 @@ class CreateServiciosproductosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('serviciosproductos');
+        Schema::dropIfExists('servicio_productos');
     }
 }

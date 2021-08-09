@@ -33,6 +33,6 @@ class CreateDetallessolicitudesserviciosproductosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('detallessolicitudesserviciosproductos');
+        Schema::dropIfExists('detalles_solicitudes_servicios_productos');
     }
 }

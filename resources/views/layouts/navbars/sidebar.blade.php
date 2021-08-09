@@ -1,4 +1,4 @@
-<div class="sidebar" data-color="orange" data-background-color="white" data-image="{{ asset('material') }}/img/sidebar-1.jpg">
+<div class="sidebar" data-color="azure" data-background-color="white" data-image="{{ asset('material') }}/img/sidebar-1.jpg">
   <!--
       Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
 
@@ -10,6 +10,7 @@
     </a>
   </div>
   <div class="sidebar-wrapper">
+  @if(Auth::user()->role == 'admin')
     <ul class="nav">
       <li class="nav-item{{ $activePage == 'inicio' ? ' active' : '' }}">
         <a class="nav-link" href="{{ route('home') }}">
@@ -101,6 +102,61 @@
           <p>{{ __('Ventas') }}</p>
         </a>
       </li>
+      @endif
+      @if(Auth::user()->role == 'profesional')
+      <ul class="nav">
+      <li class="nav-item{{ $activePage == 'inicio' ? ' active' : '' }}">
+        <a class="nav-link" href="{{ route('home') }}">
+          <i class="material-icons">dashboard</i>
+            <p>{{ __('Inicio') }}</p>
+        </a>
+      </li>
+      <li class="nav-item{{ $activePage == 'Agenda' ? ' active' : '' }}">
+        <a class="nav-link" href="#">
+          <i class="material-icons">today</i>
+            <p>{{ __('Agenda') }}</p>
+        </a>
+      </li>
+      <li class="nav-item{{ $activePage == 'typography' ? ' active' : '' }}">
+        <a class="nav-link" href="#">
+          <i class="material-icons">date_range</i>
+            <p>{{ __('Horarios') }}</p>
+        </a>
+      </li>
+      <li class="nav-item{{ $activePage == 'icons' ? ' active' : '' }}">
+        <a class="nav-link" href="#">
+          <i class="material-icons">bubble_chart</i>
+          <p>{{ __('Servicios') }}</p>
+        </a>
+      </li>
+      <li class="nav-item{{ $activePage == 'map' ? ' active' : '' }}">
+        <a class="nav-link" href="#">
+          <i class="material-icons">post_add</i>
+            <p>{{ __('Solicitud') }}</p>
+        </a>
+      </li>
+      @endif
+      @if(Auth::user()->role != 'admin' & Auth::user()->role != 'profesional')
+      <ul class="nav">
+      <li class="nav-item{{ $activePage == 'inicio' ? ' active' : '' }}">
+        <a class="nav-link" href="{{ route('home') }}">
+          <i class="material-icons">dashboard</i>
+            <p>{{ __('Inicio') }}</p>
+        </a>
+      </li>
+      <li class="nav-item{{ $activePage == 'Agenda' ? ' active' : '' }}">
+        <a class="nav-link" href="#">
+          <i class="material-icons">today</i>
+            <p>{{ __('Agenda') }}</p>
+        </a>
+      </li>
+      <li class="nav-item{{ $activePage == 'map' ? ' active' : '' }}">
+        <a class="nav-link" href="#">
+          <i class="material-icons">post_add</i>
+            <p>{{ __('Solicitud') }}</p>
+        </a>
+      </li>
+      @endif
       {{--<li class="nav-item active-pro{{ $activePage == 'upgrade' ? ' active' : '' }}">
         <a class="nav-link text-white bg-danger" href="#">
           <i class="material-icons text-white">unarchive</i>
