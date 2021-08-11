@@ -33,7 +33,7 @@
                   </div>
                   <div class="card-footer">
                     <div class="button-container">
-                      <a href="/SolicitudServicio/{{$SolicitudServicio->idsolicitudservicio}}"><button class="btn btn-sm btn-primary">Editar</button></a>
+                      <a href="/SolicitudesServicios/{{$SolicitudServicio->idsolicitudservicio}}/edit"><button class="btn btn-sm btn-primary">Editar</button></a>
                     </div>
                   </div>
                 </div>
