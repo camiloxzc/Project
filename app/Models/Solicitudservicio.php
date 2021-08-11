@@ -19,4 +19,5 @@ class Solicitudservicio extends Model
         'idusuario',
     ];
     protected $primaryKey = 'idsolicitudservicio';
+    public $timestamps = false;
 }

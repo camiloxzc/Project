@@ -13,15 +13,15 @@ class CreateSolicitudesserviciosTable extends Migration
      */
     public function up()
     {
-        Schema::create('solicitudes_servicios', function (Blueprint $table) {
+        Schema::create('solicitudservicios', function (Blueprint $table) {
             $table->id('idsolicitudservicio');
             $table->date('fechasolicitud');
             $table->date('fechaservicio');
             $table->decimal('precio');
             $table->string('modalidad')->nullable();
             $table->string('direccion');
-            $table->integer('idestadoservicio');
-            $table->integer('idusuario');
+            $table->integer('idestadoservicio')->nullable();
+            $table->integer('idusuario')->nullable();
             $table->timestamps();
         });
     }
@@ -33,6 +33,6 @@ class CreateSolicitudesserviciosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('solicitudes_servicios');
+        Schema::dropIfExists('solicitudservicios');
     }
 }

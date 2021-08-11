@@ -67,3 +67,11 @@ Route::group(['middleware' => 'auth'], function(){
 
 
 /*rutas ventas*/
+
+
+
+/*rutas solicitudes*/
+Route::group(['middleware' => 'auth'], function(){
+    Route::resource('SolicitudesServicios', App\Http\Controllers\SolicitudServicioController::class);
+
+});

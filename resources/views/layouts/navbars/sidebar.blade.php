@@ -72,16 +72,16 @@
           <p>{{ __('Servicios') }}</p>
         </a>
       </li>
-      <li class="nav-item{{ $activePage == 'map' ? ' active' : '' }}">
-        <a class="nav-link" href="#">
+      <li class="nav-item{{ $activePage == 'Solicitud' ? ' active' : '' }}">
+        <a class="nav-link" href="{{ route('SolicitudesServicios.index') }}">
           <i class="material-icons">post_add</i>
-            <p>{{ __('Solicitud') }}</p>
+            <p>{{ __('Solicitudes') }}</p>
         </a>
       </li>
       <li class="nav-item{{ $activePage == 'map' ? ' active' : '' }}">
         <a class="nav-link" href="#">
           <i class="material-icons">assignment_ind</i>
-            <p>{{ __('Proveedor') }}</p>
+            <p>{{ __('Proveedores') }}</p>
         </a>
       </li>
       <li class="nav-item{{ $activePage == 'map' ? ' active' : '' }}">
