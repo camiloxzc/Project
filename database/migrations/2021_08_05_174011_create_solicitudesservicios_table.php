@@ -18,7 +18,7 @@ class CreateSolicitudesserviciosTable extends Migration
             $table->date('fechasolicitud');
             $table->date('fechaservicio');
             $table->decimal('precio');
-            $table->string('modalidad');
+            $table->string('modalidad')->nullable();
             $table->string('direccion');
             $table->integer('idestadoservicio');
             $table->integer('idusuario');
