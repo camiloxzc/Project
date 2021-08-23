@@ -24,6 +24,7 @@
                         <th>ID</th>
                         <th>nombre</th>
                         <th>descripcion</th>
+                        <th>Categoría</th>
                         <th>precio</th>
                         <th class="text-right">Acciones</th>
                       </thead>
@@ -33,8 +34,21 @@
                           <td>{{ $ServicioProducto->idservicioproducto }}</td>
                           <td>{{ $ServicioProducto->nombre }}</td>
                           <td>{{ $ServicioProducto->descripcion}}</td>
+                            <td>{{ $ServicioProducto->idcategoria}}</td>
                           <td>{{ $ServicioProducto->precio}}</td>
                           <td class="td-actions text-right">
+                              <div class="switch">
+                                  <label>Estado</label>
+                                  </br>
+                                  <label>
+                                      Off
+                                      <!--estado no me esta trayendo la información-->
+                                      <input type="checkbox" id="estado" name="estado" for="estado" value="<?php echo $servicio['estado'] ?>">
+                                      <span class="lever"></span>
+                                      On
+                                  </label>
+                              </div>
+
                             <a href="{{ route('ServiciosProductos.show', $ServicioProducto->idservicioproducto) }}" class="btn btn-info"><i
                                 class="material-icons">person</i></a>
                             <a href="{{ route('ServiciosProductos.edit', $ServicioProducto->idservicioproducto) }}" class="btn btn-warning"><i
