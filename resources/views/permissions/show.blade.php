@@ -33,7 +33,8 @@
                   </div>
                   <div class="card-footer">
                     <div class="button-container">
-                      <a href="{{ route('permissions.edit', $permission->id) }}"><button class="btn btn-sm btn-primary">Editar</button></a>
+                      <a href="{{ route('permissions.edit', $permission->id) }}"><button class="btn btn-sm btn-primary">Editar</button></a>&nbsp;&nbsp;&nbsp;<a class="btn btn-sm btn-danger" href="{{route('permissions.index')}}">
+                  <i class="material-icons">close</i>Cancelar</a>
                     </div>
                   </div>
                 </div>

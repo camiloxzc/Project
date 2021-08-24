@@ -29,6 +29,7 @@ class CreatePermissionTables extends Migration
             $table->timestamps();
 
             $table->unique(['name', 'guard_name']);
+
         });
 
         Schema::create($tableNames['roles'], function (Blueprint $table) {

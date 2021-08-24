@@ -45,7 +45,8 @@
                   </div>
                   <div class="card-footer">
                     <div class="button-container">
-                      <a href="{{ route('roles.edit', $role->id) }}"><button type="submit" class="btn btn-sm btn-primary">Editar</button></a>
+                      <a href="{{ route('roles.edit', $role->id) }}"><button type="submit" class="btn btn-sm btn-primary">Editar</button></a>&nbsp;&nbsp;&nbsp;<a class="btn btn-sm btn-danger" href="{{route('roles.index')}}">
+                  <i class="material-icons">close</i>Cancelar</a>
                     </div>
                   </div>
                 </div>

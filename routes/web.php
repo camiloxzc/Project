@@ -23,7 +23,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 /*Route::get('/ServiciosProductos/create', [App\Http\Controllers\ServicioProductoController::class, 'create']);*/
 Route::group(['middleware' => 'auth'], function(){
     Route::resource('ServiciosProductos',ServicioProductoController::class);
-    Route::get('/changeStatus',[ServicioProductoController::class,'changeStatus'])->name('changeStatus');
+    Route::get('changeStatus',[ServicioProductoController::class,'changeStatus'])->name('changeStatus');
     /*Route::post('/ServiciosProductos', [App\Http\Controllers\ServicioProductoController::class, 'store'])->name('ServiciosProductos.store');*/
 });
 

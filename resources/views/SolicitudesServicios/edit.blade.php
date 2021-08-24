@@ -100,7 +100,8 @@
             </div>
             <!--Footer-->
             <div class="card-footer ml-auto mr-auto">
-              <button type="submit" class="btn btn-primary">Guardar</button>
+              <button type="submit" class="btn btn-primary">Guardar</button><a class="btn btn-danger" href="{{route('SolicitudesServicios.index')}}">
+                  <i class="material-icons">close</i>Cancelar</a>
             </div>
             <!--End footer-->
           </div>

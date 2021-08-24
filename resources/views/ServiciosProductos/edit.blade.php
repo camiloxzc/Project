@@ -61,7 +61,10 @@
               <div class="row">
                 <label for="estado" class="col-sm-2 col-form-label">estado</label>
                 <div class="col-sm-7">
-                  <input type="text" class="form-control" name="estado" placeholder="Ingrese estado" value="{{ $ServicioProducto->estado }}">
+                  <select class="form-control" id="estado" name="estado">
+                      <option value="1">Activo</option>
+                      <option value="0">Inactivo</option>
+                  </select>
                   @if ($errors->has('estado'))
                     <span class="error text-danger" for="input-estado">{{ $errors->first('estado') }}</span>
                   @endif
@@ -100,7 +103,8 @@
             </div>
             <!--Footer-->
             <div class="card-footer ml-auto mr-auto">
-              <button type="submit" class="btn btn-primary">Guardar</button>
+              <button type="submit" class="btn btn-primary">Guardar</button>&nbsp;&nbsp;&nbsp;<a class="btn btn-danger" href="{{route('ServiciosProductos.index')}}">
+                  <i class="material-icons">close</i>Cancelar</a>
             </div>
             <!--End footer-->
           </div>

@@ -53,7 +53,7 @@
                     <td class="td-actions text-right">
                       <a href="{{ route('roles.show', $role->id) }}" class="btn btn-info"> <i
                           class="material-icons">person</i> </a>
-                      <a href="{{ route('roles.edit', $role->id) }}" class="btn btn-success"> <i
+                      <a href="{{ route('roles.edit', $role->id) }}" class="btn btn-warning"> <i
                           class="material-icons">edit</i> </a>
                       <form action="{{ route('roles.destroy', $role->id) }}" method="post"
                         onsubmit="return confirm('Esta seguro?')" style="display: inline-block;">

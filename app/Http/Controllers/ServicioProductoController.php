@@ -113,14 +113,9 @@ class ServicioProductoController extends Controller
     }
     public function changeStatus(Request $request){
 
-        $EstadoUpdate = ServicioProducto::findOrFail($request->idservicioproducto)->update(['estado' => $request->estado]);
+        $EstadoUpdate = ServicioProducto::find($request->idservicioproducto);
+        $EstadoUpdate->estado = $request->estado;
+        $EstadoUpdate->save();
 
-        if($request->estado == 0)  {
-            $newStatus = '<br> <button type="button" class="btn btn-sm btn-danger">Inactiva</button>';
-        }else{
-            $newStatus ='<br> <button type="button" class="btn btn-sm btn-success">Activa</button>';
-        }
-
-        return response()->json(['var'=>''.$newStatus.'']);
         }
 }

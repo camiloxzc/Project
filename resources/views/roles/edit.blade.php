@@ -59,7 +59,8 @@
             <!--End body-->
             <!--Footer-->
             <div class="card-footer ml-auto mr-auto">
-              <button type="submit" class="btn btn-primary">Actualizar</button>
+              <button type="submit" class="btn btn-primary">Actualizar</button>&nbsp;&nbsp;&nbsp;&nbsp;<a class="btn btn-danger" href="{{route('roles.index')}}">
+                  <i class="material-icons">close</i>Cancelar</a>
             </div>
           </div>
           <!--End footer-->

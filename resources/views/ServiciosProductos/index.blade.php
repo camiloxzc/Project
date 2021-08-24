@@ -2,7 +2,7 @@
 
 @section('content')
 <link rel="stylesheet" type="text/css" href="{{ asset('css/switch.css') }}">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js" integrity="sha512-F636MAkMAhtTplahL9F6KmTfxTmYcAcjcCkyu0f0voT3N/6vzAuJ4Num55a0gEJ+hRLHhdz3vDvZpf6kqgEa5w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><div class="content">
+<div class="content">
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-12">
@@ -96,13 +96,14 @@
      </div>
    </div>
  </div>
-<script src="{{ asset('js/jquery.min.js') }}"></script>
+ <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+
 <script src="{{ asset('js/popper.min.js') }}"></script>
 <script src="{{ asset('js/bootstrap.min.js') }}"></script>
 
  <script type="text/javascript">
     $(document).ready(function() {
-        $(#products_table).DataTable()
+        $('#products_table').Database
         });
         $(function() {
             $('.mi_checkbox').change(function() {
@@ -124,5 +125,6 @@
     });
 
 });
+
 </script>
 @endsection

@@ -24,7 +24,8 @@
             </div>
             <!--Footer-->
             <div class="card-footer ml-auto mr-auto">
-              <button type="submit" class="btn btn-primary">Guardar</button>
+              <button type="submit" class="btn btn-primary">Guardar</button>&nbsp;&nbsp;&nbsp;<a class="btn btn-danger" href="{{route('permissions.index')}}">
+                  <i class="material-icons">close</i>Cancelar</a>
             </div>
             <!--End footer-->
           </div>

@@ -5,171 +5,134 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\AppBaseController;
 use App\Http\Requests\CreateUserRequest;
 use App\Http\Requests\UpdateUserRequest;
-use App\User;
+use App\Model\User;
 use Flash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Response;
 use Spatie\Permission\Models\Role;
+use Illuminate\Support\Arr;
 
-class UserController extends AppBaseController
+class UserController extends Controller
 {
     /**
-     * Display a listing of the User.
+     * Display a listing of the resource.
      *
-     * @param Request $request
-     *
-     * @return Response
+     * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
     {
-        /** @var User $users */
-        $users = User::all();
-
-        return view('users.index')
-            ->with('users', $users);
+        $data = User::orderBy('id','DESC')->paginate(5);
+        return view('users.index',compact('data'))
+            ->with('i', ($request->input('page', 1) - 1) * 5);
     }
 
     /**
-     * Show the form for creating a new User.
+     * Show the form for creating a new resource.
      *
-     * @return Response
+     * @return \Illuminate\Http\Response
      */
     public function create()
     {
-        $roleItems = Role::pluck('name', 'id')->toArray();
-        return view('users.create', compact('roleItems'));
+        $roles = Role::pluck('name','name')->all();
+        return view('users.create',compact('roles'));
     }
 
     /**
-     * Store a newly created User in storage.
+     * Store a newly created resource in storage.
      *
-     * @param CreateUserRequest $request
-     *
-     * @return Response
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
      */
-    public function store(CreateUserRequest $request)
+    public function store(Request $request)
     {
+        $this->validate($request, [
+            'name' => 'required',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|same:confirm-password',
+            'roles' => 'required'
+        ]);
+
         $input = $request->all();
         $input['password'] = Hash::make($input['password']);
-        /** @var User $user */
+
         $user = User::create($input);
-        $user->assignRole($input['rol']);
+        $user->assignRole($request->input('roles'));
 
-        Flash::success('User saved successfully.');
-
-        return redirect(route('users.index'));
+        return redirect()->route('users.index')
+                        ->with('success','User created successfully');
     }
 
     /**
-     * Display the specified User.
+     * Display the specified resource.
      *
-     * @param int $id
-     *
-     * @return Response
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        /** @var User $user */
         $user = User::find($id);
-        if (empty($user)) {
-            Flash::error('User not found');
-
-            return redirect(route('users.index'));
-        }
-
-        return view('users.show')->with('user', $user);
+        return view('users.show',compact('user'));
     }
 
     /**
-     * Show the form for editing the specified User.
+     * Show the form for editing the specified resource.
      *
-     * @param int $id
-     *
-     * @return Response
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        /** @var User $user */
         $user = User::find($id);
-        $roleItems = Role::pluck('name', 'id');
-        if (empty($user)) {
-            Flash::error('User not found');
+        $roles = Role::pluck('name','name')->all();
+        $userRole = $user->roles->pluck('name','name')->all();
 
-            return redirect(route('users.index'));
-        }
-        return view('users.edit', compact('user', 'roleItems'));
-    }
-    public function delete_roles($id)
-    {
-        $user = User::find($id);
-        if (empty($user)) {
-            Flash::error('User not found');
-
-            return redirect(route('users.index'));
-        }
-        $user->roles()->detach();
-        Flash::success('Roles removes successfully');
-        return redirect(route('users.index'));
+        return view('users.edit',compact('user','roles','userRole'));
     }
 
     /**
-     * Update the specified User in storage.
+     * Update the specified resource in storage.
      *
-     * @param int $id
-     * @param UpdateUserRequest $request
-     *
-     * @return Response
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
      */
-    public function update($id, UpdateUserRequest $request)
+    public function update(Request $request, $id)
     {
-        /** @var User $user */
+        $this->validate($request, [
+            'name' => 'required',
+            'email' => 'required|email|unique:users,email,'.$id,
+            'password' => 'same:confirm-password',
+            'roles' => 'required'
+        ]);
+
+        $input = $request->all();
+        if(!empty($input['password'])){
+            $input['password'] = Hash::make($input['password']);
+        }else{
+            $input = Arr::except($input,array('password'));
+        }
+
         $user = User::find($id);
+        $user->update($input);
+        DB::table('model_has_roles')->where('model_id',$id)->delete();
 
-        if (empty($user)) {
-            Flash::error('User not found');
+        $user->assignRole($request->input('roles'));
 
-            return redirect(route('users.index'));
-        }
-        if ($request['password']) {
-            $request['password'] = Hash::make($input['password']);
-        } else {
-            unset($request['password']);
-        }
-        $user->fill($request->all());
-        $user->save();
-        $user->roles()->detach();
-        $user->assignRole($request['rol']);
-
-        Flash::success('User updated successfully.');
-
-        return redirect(route('users.index'));
+        return redirect()->route('users.index')
+                        ->with('success','User updated successfully');
     }
 
     /**
-     * Remove the specified User from storage.
+     * Remove the specified resource from storage.
      *
-     * @param int $id
-     *
-     * @throws \Exception
-     *
-     * @return Response
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        /** @var User $user */
-        $user = User::find($id);
-
-        if (empty($user)) {
-            Flash::error('User not found');
-
-            return redirect(route('users.index'));
-        }
-
-        $user->delete();
-
-        Flash::success('User deleted successfully.');
-
-        return redirect(route('users.index'));
+        User::find($id)->delete();
+        return redirect()->route('users.index')
+                        ->with('success','User deleted successfully');
     }
 }

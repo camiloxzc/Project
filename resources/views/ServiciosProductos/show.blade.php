@@ -33,7 +33,8 @@
                   </div>
                   <div class="card-footer">
                     <div class="button-container">
-                      <a href="/ServiciosProductos/{{$ServicioProducto->idservicioproducto}}/edit"><button class="btn btn-sm btn-primary">Editar</button></a>
+                      <a href="/ServiciosProductos/{{$ServicioProducto->idservicioproducto}}/edit"><button class="btn btn-sm btn-primary">Editar</button></a>&nbsp;&nbsp;&nbsp;<a class="btn btn-sm btn-danger" href="{{route('ServiciosProductos.index')}}">
+                  <i class="material-icons">close</i>Cancelar</a>
                     </div>
                   </div>
                 </div>
