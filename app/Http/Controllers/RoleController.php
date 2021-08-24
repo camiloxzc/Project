@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Flash;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
@@ -13,10 +14,14 @@ class RoleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         //
-        $roles = Role::paginate(10);
+        $name  = $request->get('name');
+
+        $roles = Role::orderBy('id', 'ASC')
+        ->name($name)
+        ->paginate(10);
 
         return view('roles.index', compact('roles'));
     }
@@ -29,7 +34,7 @@ class RoleController extends Controller
     public function create()
     {
         //
-        $permissions = Permission::all()->pluck('name', 'id');
+        $permissions = Permission::all()->pluck('name', 'id')->toArray();
 
         return view('roles.create', compact('permissions'));
     }
@@ -43,11 +48,10 @@ class RoleController extends Controller
     public function store(Request $request)
     {
         //
-        $role = Role::create($request->only('name'));
-
-        $role->permissions()->sync($request->input('permissions', []));
-
-        return redirect()->route('roles.index');
+        $role = Role::create(['name' => $request->name]);
+        $role->syncPermissions($request->permissions);
+        Flash::success('Role created successfully.');
+        return redirect(route('roles.index'));
     }
 
     /**

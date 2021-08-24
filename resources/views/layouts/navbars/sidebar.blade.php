@@ -10,7 +10,7 @@
     </a>
   </div>
   <div class="sidebar-wrapper">
-  @if(Auth::user()->role == 'admin')
+  {{--@if(Auth::user()->role == 'admin')--}}
     <ul class="nav">
       <li class="nav-item{{ $activePage == 'inicio' ? ' active' : '' }}">
         <a class="nav-link" href="{{ route('home') }}">
@@ -72,10 +72,10 @@
           <p>{{ __('Servicios') }}</p>
         </a>
       </li>
-      <li class="nav-item{{ $activePage == 'Solicitud' ? ' active' : '' }}">
-        <a class="nav-link" href="{{ route('SolicitudesServicios.index') }}">
-          <i class="material-icons">post_add</i>
-            <p>{{ __('Solicitudes') }}</p>
+      <li class="nav-item{{ $activePage == 'map' ? ' active' : '' }}">
+        <a class="nav-link" href="#">
+          <i class="material-icons">shopping_bag</i>
+            <p>{{ __('Compras') }}</p>
         </a>
       </li>
       <li class="nav-item{{ $activePage == 'map' ? ' active' : '' }}">
@@ -84,10 +84,10 @@
             <p>{{ __('Proveedores') }}</p>
         </a>
       </li>
-      <li class="nav-item{{ $activePage == 'map' ? ' active' : '' }}">
-        <a class="nav-link" href="#">
-          <i class="material-icons">shopping_bag</i>
-            <p>{{ __('Compras') }}</p>
+      <li class="nav-item{{ $activePage == 'Solicitud' ? ' active' : '' }}">
+        <a class="nav-link" href="{{ route('SolicitudesServicios.index') }}">
+          <i class="material-icons">post_add</i>
+            <p>{{ __('Solicitudes') }}</p>
         </a>
       </li>
       <li class="nav-item{{ $activePage == 'Productos' ? ' active' : '' }}">
@@ -102,7 +102,7 @@
           <p>{{ __('Ventas') }}</p>
         </a>
       </li>
-      @endif
+      {{--@endif
       @if(Auth::user()->role == 'profesional')
       <ul class="nav">
       <li class="nav-item{{ $activePage == 'inicio' ? ' active' : '' }}">
@@ -156,7 +156,8 @@
             <p>{{ __('Solicitud') }}</p>
         </a>
       </li>
-      @endif
+     @endif
+     --}}
       {{--<li class="nav-item active-pro{{ $activePage == 'upgrade' ? ' active' : '' }}">
         <a class="nav-link text-white bg-danger" href="#">
           <i class="material-icons text-white">unarchive</i>

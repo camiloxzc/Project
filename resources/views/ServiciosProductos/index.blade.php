@@ -1,15 +1,29 @@
 @extends('layouts.main', ['activePage' => 'Productos', 'titlePage' => __('Productos')])
 
 @section('content')
-<div class="content">
+<link rel="stylesheet" type="text/css" href="{{ asset('css/switch.css') }}">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js" integrity="sha512-F636MAkMAhtTplahL9F6KmTfxTmYcAcjcCkyu0f0voT3N/6vzAuJ4Num55a0gEJ+hRLHhdz3vDvZpf6kqgEa5w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><div class="content">
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-12">
-          <div class="row">
+
+         {{-- <div class="row">--}}
             <div class="col-md-12">
               <div class="card">
                 <div class="card-header card-header-primary">
-                  <h4 class="card-title">Productos</h4>
+                  <h4 class="card-title">Productos
+                            {{ Form::open(['route' => 'ServiciosProductos.index', 'method' => 'GET', 'class' => 'form-inline pull-right']) }}
+                                <div class="form-group">
+                                    {{ Form::text('nombre', null, ['class' => 'form-control','wire:model' => 'search', 'placeholder' => 'Buscar']) }}
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-white btn-round btn-just-icon">
+                                    <span class="material-icons">search</span>
+                                    <div class="ripple-container"></div>
+                                    </button>
+                                </div>
+                            {{ Form::close() }}
+                  </h4>
                   <p class="card-category">Productos registrados</p>
                 </div>
                 <div class="card-body">
@@ -19,12 +33,13 @@
                     </div>
                   </div>
                   <div class="table-responsive">
-                    <table class="table">
+                    <table class="table table-hover table-striped" id="products_table">
                       <thead class="text-primary">
                         <th>ID</th>
                         <th>nombre</th>
                         <th>descripcion</th>
                         <th>precio</th>
+                        <th>estado</th>
                         <th class="text-right">Acciones</th>
                       </thead>
                       <tbody>
@@ -34,7 +49,21 @@
                           <td>{{ $ServicioProducto->nombre }}</td>
                           <td>{{ $ServicioProducto->descripcion}}</td>
                           <td>{{ $ServicioProducto->precio}}</td>
+                          <td id="resp{{ $ServicioProducto->idservicioproducto }}">
+                            @if($ServicioProducto->estado == 1)
+                            <button type="button" class="btn btn-sm btn-success">Activo</button>
+                                @else
+                            <button type="button" class="btn btn-sm btn-danger">Inactivo</button>
+                            @endif
+
+                        </td>
                           <td class="td-actions text-right">
+                          <label class="switch">
+                                <input data-id="{{ $ServicioProducto->idservicioproducto }}" class="mi_checkbox" type="checkbox" data-onstyle="success"
+                                 data-offstyle="danger" data-toggle="toggle" data-on="Active" data-off="Inactive"
+                                 {{ $ServicioProducto->estado ? 'checked' : '' }}>
+                                <span class="slider round"></span>
+                            </label>
                             <a href="{{ route('ServiciosProductos.show', $ServicioProducto->idservicioproducto) }}" class="btn btn-info"><i
                                 class="material-icons">person</i></a>
                             <a href="{{ route('ServiciosProductos.edit', $ServicioProducto->idservicioproducto) }}" class="btn btn-warning"><i
@@ -58,14 +87,42 @@
                     </table>
                   </div>
                 </div>
-                <div class="card-footer mr-auto">
-                  {{ $ServiciosProductos->links() }}
+                <div class="card-footer">
+                  {{ $ServiciosProductos->render() }}
                 </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+           </div>
+         </div>
+       </div>
+     </div>
+   </div>
+ </div>
+<script src="{{ asset('js/jquery.min.js') }}"></script>
+<script src="{{ asset('js/popper.min.js') }}"></script>
+<script src="{{ asset('js/bootstrap.min.js') }}"></script>
+
+ <script type="text/javascript">
+    $(document).ready(function() {
+        $(#products_table).DataTable()
+        });
+        $(function() {
+            $('.mi_checkbox').change(function() {
+            //Verifico el estado del checkbox, si esta seleccionado sera igual a 1 de lo contrario sera igual a 0
+            var estado = $(this).prop('checked') == true ? 1 : 0;
+            var idservicioproducto = $(this).data('idservicioproducto');
+                console.log(estado);
+        $.ajax({
+            type: "GET",
+            dataType: "json",
+            //url: '',
+            url: '/changeStatus',
+            data: {'estado': estado, 'idservicioproducto': idservicioproducto},
+            success: function(data){
+                $('#resp' + idservicioproducto).html(data.var);
+                console.log('Success')
+            }
+        });
+    });
+
+});
+</script>
 @endsection

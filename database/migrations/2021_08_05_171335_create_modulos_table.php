@@ -17,6 +17,7 @@ class CreateModulosTable extends Migration
             $table->id('idmodulo');
             $table->string('nombre',20);
             $table->string('controlador');
+            $table->boolean('status');
             $table->timestamps();
         });
     }

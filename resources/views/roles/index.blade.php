@@ -7,7 +7,19 @@
       <div class="col-md-12">
         <div class="card">
           <div class="card-header card-header-primary">
-            <h4 class="card-title">Roles</h4>
+            <h4 class="card-title">Roles
+                            {{ Form::open(['route' => 'roles.index', 'method' => 'GET', 'class' => 'form-inline pull-right']) }}
+                                <div class="form-group">
+                                    {{ Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Buscar']) }}
+                                </div>
+                                <div class="form-group">
+                                <button type="submit" class="btn btn-white btn-round btn-just-icon">
+                                    <i class="material-icons">search</i>
+                                    <div class="ripple-container"></div>
+                                </button>
+                                </div>
+                            {{ Form::close() }}
+            </h4>
             <p class="card-category">Lista de roles registrados en la base de datos</p>
           </div>
           <div class="card-body">
@@ -21,7 +33,7 @@
                 <thead class="text-primary">
                   <th> ID </th>
                   <th> Nombre </th>
-                  <th> Fecha de creación </th>
+                  <th> Modulos </th>
                   <th> Permisos </th>
                   <th class="text-right"> Acciones </th>
                 </thead>
@@ -30,7 +42,7 @@
                   <tr>
                     <td>{{ $role->id }}</td>
                     <td>{{ $role->name }}</td>
-                    <td class="text-primary">{{ $role->created_at->toFormattedDateString() }}</td>
+                    <td>{{ $role->id }}</td>
                     <td>
                       @forelse ($role->permissions as $permission)
                           <span class="badge badge-info">{{ $permission->name }}</span>

@@ -20,4 +20,24 @@ class ServicioProducto extends Model
     ];
     protected $primaryKey = 'idservicioproducto';
     public $timestamps = false;
+
+    public $search;
+
+    public function updatingSearch() {
+        $this->resetPage();
+    }
+
+    //Query Scope
+
+    public function scopeNombre($query, $nombre)
+    {
+        if($nombre)
+            return $query->where('nombre', 'LIKE', "%$nombre%");
+    }
+
+    public function scopePrecio($query, $precio)
+    {
+        if($precio)
+            return $query->where('precio', 'LIKE', "%$precio%");
+    }
 }

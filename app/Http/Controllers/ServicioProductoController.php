@@ -12,10 +12,16 @@ class ServicioProductoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         //
-        $ServiciosProductos = ServicioProducto::paginate(10);
+        $nombre  = $request->get('nombre');
+    	$precio = $request->get('precio');
+
+        $ServiciosProductos = ServicioProducto::orderBy('idservicioproducto', 'ASC')
+            ->nombre($nombre)
+    		->precio($precio)
+            ->paginate(10);
 
         return view('ServiciosProductos.index', compact('ServiciosProductos'));
     }
@@ -105,4 +111,16 @@ class ServicioProductoController extends Controller
 
         return back();
     }
+    public function changeStatus(Request $request){
+
+        $EstadoUpdate = ServicioProducto::findOrFail($request->idservicioproducto)->update(['estado' => $request->estado]);
+
+        if($request->estado == 0)  {
+            $newStatus = '<br> <button type="button" class="btn btn-sm btn-danger">Inactiva</button>';
+        }else{
+            $newStatus ='<br> <button type="button" class="btn btn-sm btn-success">Activa</button>';
+        }
+
+        return response()->json(['var'=>''.$newStatus.'']);
+        }
 }
