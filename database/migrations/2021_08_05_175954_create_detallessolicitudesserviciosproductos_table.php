@@ -18,7 +18,7 @@ class CreateDetallessolicitudesserviciosproductosTable extends Migration
             $table->time('horainicio');
             $table->time('horafinal');
             $table->decimal('precio');
-            $table->boolean('estado');
+            $table->boolean('estado')->default('1');;
             $table->integer('cantidad');
             $table->integer('idservicioproducto');
             $table->integer('idsolicitudservicio');

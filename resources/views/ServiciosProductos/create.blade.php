@@ -58,9 +58,9 @@
                 </div>
               </div>
               <div class="row">
-                <label for="estado" class="col-sm-2 col-form-label">estado</label>
-                <div class="col-sm-7">
-                  <select class="form-control" id="estado" name="estado">
+                <label for="estado" class="col-sm-2 col-form-label">Estado</label>
+                <div class="col-sm-7 form-group">
+                  <select class="form-control selectpicker" data-style="btn btn-link" id="estado">
                       <option>Seleccione el estado del producto o servicio</option>
                       <option value="1">Activo</option>
                       <option value="0">Inactivo</option>

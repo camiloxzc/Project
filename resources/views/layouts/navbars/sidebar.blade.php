@@ -30,11 +30,10 @@
             <p>{{ __('Roles') }}</p>
         </a>
       </li>
-      <li class="nav-item {{ ($activePage == 'Usuarios' || $activePage == 'Profesionales' || $activePage == 'Clientes') ? ' active' : '' }}">
+      <li class="nav-item {{ $activePage == 'Usuarios' ? ' active' : '' }}">
         <a class="nav-link" data-toggle="collapse" href="#laravelExample" aria-expanded="true">
             <i class="material-icons">account_box</i>
           <p>{{ __('Usuarios') }}
-            <b class="caret"></b>
           </p>
         </a>
         <div class="collapse" id="laravelExample">
@@ -46,7 +45,7 @@
               </a>
             </li>
             <li class="nav-item{{ $activePage == 'Clientes' ? ' active' : '' }}">
-              <a class="nav-link" href="#">
+              <a class="nav-link" href="{{ route('users.index') }}">
                 <i class="material-icons">arrow_right</i>
                 <span class="sidebar-normal"> {{ __('Clientes') }} </span>
               </a>
