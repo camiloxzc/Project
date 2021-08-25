@@ -39,6 +39,7 @@
                         <th>nombre</th>
                         <th>descripcion</th>
                         <th>precio</th>
+                        <th>categoría</th>
                         <th>estado</th>
                         <th class="text-right">Acciones</th>
                       </thead>
@@ -49,6 +50,7 @@
                           <td>{{ $ServicioProducto->nombre }}</td>
                           <td>{{ $ServicioProducto->descripcion}}</td>
                           <td>{{ $ServicioProducto->precio}}</td>
+                            <td>{{ $ServicioProducto->idcategoria}}</td>
                           <td id="resp{{ $ServicioProducto->idservicioproducto }}">
                             @if($ServicioProducto->estado == 1)
                             <button type="button" id="btnActivo" class="btn btn-sm btn-success">Activo</button>
@@ -111,7 +113,7 @@
             var estado = $(this).prop('checked') == true ? 1 : 0;
             var idservicioproducto = $(this).attr("data-id");
                 console.log(estado);
-             
+
         $.ajax({
             type: "POST",
             dataType: "json",
@@ -121,7 +123,7 @@
             success: function(data){
                 $('#resp' + idservicioproducto).html(data.var);
                 console.log(data)
-            
+
             }
         });
     });

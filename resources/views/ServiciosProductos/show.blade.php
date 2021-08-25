@@ -6,7 +6,7 @@
       <div class="col-md-12">
         <div class="card">
           <div class="card-header card-header-primary">
-            <div class="card-title">Productos</div>
+            <div class="card-title">Productos o Servicios</div>
             <p class="card-category">Vista detallada del producto {{ $ServicioProducto->nombre }}</p>
           </div>
           <!--body-->

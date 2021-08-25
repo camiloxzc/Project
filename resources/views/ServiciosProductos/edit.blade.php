@@ -70,15 +70,15 @@
                   @endif
                 </div>
               </div>
-              <div class="row">
-                <label for="idcategoria" class="col-sm-2 col-form-label">Id Categoria</label>
-                <div class="col-sm-7">
-                  <input type="text" class="form-control" name="idcategoria" placeholder="Ingrese idcategoria" value="{{ $ServicioProducto->idcategoria }}">
-                  @if ($errors->has('idcategoria'))
-                    <span class="error text-danger" for="input-idcategoria">{{ $errors->first('idcategoria') }}</span>
-                  @endif
+                <div class="form-group">
+                    <label for="idcategoria" class="col-sm-2 col-form-label">Categoría</label>
+                    <select name="idcategoria" id="idcategoria" class="">
+                        <option class="form-control" value="">Escoje categoría</option>
+                        @foreach ($categoria as $categoria)
+                            <option class="form-control" autofocus value="{{ $categoria['idcategoria'] }}">{{ $categoria['nombre'] }}</option>
+                        @endforeach
+                    </select>
                 </div>
-              </div>
               <div class="row">
                 <label for="iddetalleserviciousuario" class="col-sm-2 col-form-label">iddetalleserviciousuario</label>
                 <div class="col-sm-7">

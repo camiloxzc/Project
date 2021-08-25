@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\ServicioProducto;
+use App\Models\Categoria;
 
 class ServicioProductoController extends Controller
 {
@@ -33,7 +34,8 @@ class ServicioProductoController extends Controller
      */
     public function create()
     {
-        return view('ServiciosProductos.create');
+        $categoria = Categoria::all();
+        return view('ServiciosProductos.create', compact('categoria'));
     }
 
     /**
@@ -69,8 +71,9 @@ class ServicioProductoController extends Controller
      */
     public function edit($idservicioproducto)
     {
+        $categoria = Categoria::all();
         $ServicioProducto = ServicioProducto::find($idservicioproducto);
-        return view('ServiciosProductos.edit')->with('ServicioProducto',$ServicioProducto);
+        return view('ServiciosProductos.edit', compact('categoria'))->with('ServicioProducto',$ServicioProducto);
     }
 
     /**
