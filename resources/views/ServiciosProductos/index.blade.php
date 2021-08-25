@@ -51,9 +51,9 @@
                           <td>{{ $ServicioProducto->precio}}</td>
                           <td id="resp{{ $ServicioProducto->idservicioproducto }}">
                             @if($ServicioProducto->estado == 1)
-                            <button type="button" class="btn btn-sm btn-success">Activo</button>
+                            <button type="button" id="btnActivo" class="btn btn-sm btn-success">Activo</button>
                                 @else
-                            <button type="button" class="btn btn-sm btn-danger">Inactivo</button>
+                            <button type="button" id='btnInactivo' class="btn btn-sm btn-danger">Inactivo</button>
                             @endif
 
                         </td>
@@ -109,17 +109,19 @@
             $('.mi_checkbox').change(function() {
             //Verifico el estado del checkbox, si esta seleccionado sera igual a 1 de lo contrario sera igual a 0
             var estado = $(this).prop('checked') == true ? 1 : 0;
-            var idservicioproducto = $(this).data('idservicioproducto');
+            var idservicioproducto = $(this).attr("data-id");
                 console.log(estado);
+             
         $.ajax({
-            type: "GET",
+            type: "POST",
             dataType: "json",
             //url: '',
             url: '/changeStatus',
-            data: {'estado': estado, 'idservicioproducto': idservicioproducto},
+            data: {"_token": "{{ csrf_token() }}",'estado': estado, 'idservicioproducto': idservicioproducto},
             success: function(data){
                 $('#resp' + idservicioproducto).html(data.var);
-                console.log('Success')
+                console.log(data)
+            
             }
         });
     });

@@ -112,9 +112,9 @@ class ServicioProductoController extends Controller
         return back();
     }
     public function changeStatus(Request $request){
-
-        $EstadoUpdate = ServicioProducto::find($request->idservicioproducto);
-        $EstadoUpdate->estado = $request->estado;
+        //dd($request->all());
+        $EstadoUpdate = ServicioProducto::find($request->input('idservicioproducto'));
+        $EstadoUpdate->estado = $request->input('estado');
         $EstadoUpdate->save();
 
         }
