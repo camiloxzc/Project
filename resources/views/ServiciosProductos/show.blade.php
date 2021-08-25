@@ -22,14 +22,18 @@
                           <h5 class="title mt-3">Producto: {{ $ServicioProducto->nombre }}</h5>
                         </a>
                         <p class="description">
-                        {{ $ServicioProducto->precio }} <br>
-                        {{ $ServicioProducto->descripcion }}
+                        Precio: {{ $ServicioProducto->precio }} <br>
+                        Descripción:{{ $ServicioProducto->descripcion }}<br>
+                            Cantidad: {{ $ServicioProducto->cantidad}} <br>
+                            Estado: @if($ServicioProducto->estado == 1)
+                                <button type="button" id="btnActivo" class="btn btn-sm btn-success">Activo</button>
+                            @else
+                                <button type="button" id='btnInactivo' class="btn btn-sm btn-danger">Inactivo</button>
+                            @endif
+
                         </p>
                       </div>
                     </p>
-                    <div class="card-description">
-                       Lorem .
-                    </div>
                   </div>
                   <div class="card-footer">
                     <div class="button-container">
