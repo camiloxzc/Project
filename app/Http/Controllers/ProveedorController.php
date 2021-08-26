@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Proveedor;
 use Illuminate\Http\Request;
 
 class ProveedorController extends Controller
@@ -11,9 +12,11 @@ class ProveedorController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         //
+        $proveedors = Proveedor::orderBy('idproveedor','ASC')->paginate();
+        return view('proveedors.index',compact('proveedors'));
     }
 
     /**
@@ -24,6 +27,7 @@ class ProveedorController extends Controller
     public function create()
     {
         //
+        return view('proveedors.create');
     }
 
     /**
@@ -35,6 +39,8 @@ class ProveedorController extends Controller
     public function store(Request $request)
     {
         //
+        Proveedor::create($request->all());
+        return redirect()->route('proveedors.index');
     }
 
     /**
@@ -43,9 +49,11 @@ class ProveedorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($idproveedor)
     {
         //
+        $proveedors= Proveedor::find($idproveedor);
+        return view('proveedors.show')->with('proveedors', $proveedors);
     }
 
     /**
@@ -54,9 +62,11 @@ class ProveedorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($idproveedor)
     {
         //
+        $proveedors= Proveedor::find($idproveedor);
+        return view('proveedors.edit')->with('proveedores',$proveedors);
     }
 
     /**
@@ -66,9 +76,20 @@ class ProveedorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $idproveedor)
     {
         //
+        $proveedors = Proveedor::find($idproveedor);
+         //Actualizar datos  de los atributos a editar
+         $proveedors->nit = $request->nit;
+         $proveedors->proveedor = $request->proveedor;
+         $proveedors->personacontacto = $request->personacontacto;
+         $proveedors->correo = $request->correo;
+         $proveedors->telefono = $request->telefono;
+         $proveedors->direccion = $request->direccion;
+         $proveedors->update();
+
+         return redirect()->route('proveedors.index');
     }
 
     /**
@@ -77,8 +98,12 @@ class ProveedorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($idproveedor)
     {
         //
+        $proveedors=Proveedor::find($idproveedor);
+        $proveedors->delete();
+
+        return back();
     }
 }

@@ -32,7 +32,7 @@
       </li>
       <li class="nav-item {{ $activePage == 'Usuarios' ? ' active' : '' }}">
         <a class="nav-link" data-toggle="collapse" href="#laravelExample" aria-expanded="true">
-            <i class="material-icons">account_box</i>
+            <i class="material-icons">manage_accounts</i>
           <p>{{ __('Usuarios') }}
           </p>
         </a>
@@ -55,7 +55,7 @@
       </li>
       <li class="nav-item{{ $activePage == 'Agenda' ? ' active' : '' }}">
         <a class="nav-link" href="#">
-          <i class="material-icons">today</i>
+          <i class="material-icons">event_note</i>
             <p>{{ __('Agenda') }}</p>
         </a>
       </li>
@@ -67,7 +67,7 @@
       </li>
       <li class="nav-item{{ $activePage == 'icons' ? ' active' : '' }}">
         <a class="nav-link" href="#">
-          <i class="material-icons">bubble_chart</i>
+          <i class="material-icons">brush</i>
           <p>{{ __('Servicios') }}</p>
         </a>
       </li>
@@ -78,8 +78,8 @@
         </a>
       </li>
       <li class="nav-item{{ $activePage == 'Proveedores' ? ' active' : '' }}">
-        <a class="nav-link" href="#">
-          <i class="material-icons">assignment_ind</i>
+        <a class="nav-link" href="{{ route('proveedors.index') }}">
+          <i class="material-icons">store</i>
             <p>{{ __('Proveedores') }}</p>
         </a>
       </li>
@@ -91,7 +91,7 @@
       </li>
       <li class="nav-item{{ $activePage == 'Productos' ? ' active' : '' }}">
         <a class="nav-link" href="{{route('ServiciosProductos.index')}}">
-          <i class="material-icons">notifications</i>
+          <i class="material-icons">inventory</i>
           <p>{{ __('Productos') }}</p>
         </a>
       </li>
