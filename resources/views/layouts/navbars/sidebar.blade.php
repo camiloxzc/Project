@@ -71,13 +71,13 @@
           <p>{{ __('Servicios') }}</p>
         </a>
       </li>
-      <li class="nav-item{{ $activePage == 'map' ? ' active' : '' }}">
-        <a class="nav-link" href="#">
+      <li class="nav-item{{ $activePage == 'Compras' ? ' active' : '' }}">
+        <a class="nav-link" href="{{ route('compras.index') }}">
           <i class="material-icons">shopping_bag</i>
             <p>{{ __('Compras') }}</p>
         </a>
       </li>
-      <li class="nav-item{{ $activePage == 'map' ? ' active' : '' }}">
+      <li class="nav-item{{ $activePage == 'Proveedores' ? ' active' : '' }}">
         <a class="nav-link" href="#">
           <i class="material-icons">assignment_ind</i>
             <p>{{ __('Proveedores') }}</p>

@@ -95,7 +95,7 @@ class ServicioProductoController extends Controller
          $ServicioProducto->estado = $request->estado;
          $ServicioProducto->idcategoria = $request->idcategoria;
          $ServicioProducto->iddetalleserviciousuario = $request->iddetalleserviciousuario;
-        $ServicioProducto->update();
+         $ServicioProducto->update();
 
         return redirect()->route('ServiciosProductos.index');
     }

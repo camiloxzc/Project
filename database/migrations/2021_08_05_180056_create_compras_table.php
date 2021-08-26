@@ -15,12 +15,12 @@ class CreateComprasTable extends Migration
     {
         Schema::create('compras', function (Blueprint $table) {
             $table->id('idcompra');
-            $table->date('fecha');
-            $table->decimal('preciototal');
-            $table->float('iva');
-            $table->string('numerofactura');
-            $table->string('urlimagen');
-            $table->integer('idproveedor');
+            $table->date('fecha')->nullable();
+            $table->decimal('preciototal')->nullable();
+            $table->float('iva')->nullable();
+            $table->string('numerofactura')->nullable();
+            $table->string('urlimagen')->nullable();
+            $table->integer('idproveedor')->nullable();
             $table->timestamps();
         });
     }

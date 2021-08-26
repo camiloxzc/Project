@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\CompraController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\ServicioProductoController;
 
@@ -53,6 +54,7 @@ Route::group(['middleware' => 'auth'], function(){
 /*rutas usuario*/
 Route::group(['middleware' => 'auth'], function(){
     Route::resource('users', App\Http\Controllers\UserController::class);
+    Route::resource('compras', App\Http\Controllers\CompraController::class);
 
 });
 
