@@ -70,17 +70,17 @@
                   @endif
                 </div>
               </div>
-
-                <div class="form-group">
-                    <label for="idcategoria" class="col-sm-2 col-form-label">Categoría</label>
-                    <select name="idcategoria" id="idcategoria" class="">
-                        <option class="form-control" value="">Escoje categoría</option>
+              <div class="row">
+                <label for="idcategoria" class="col-sm-2 col-form-label">Categoría</label>
+                <div class="col-sm-7 form-group">
+                    <select name="idcategoria" id="idcategoria" class="form-control selectpicker">
+                        <option class="form-control" value="">Seleccione la categoría</option>
                         @foreach ($categoria as $categoria)
                             <option class="form-control" autofocus value="{{ $categoria['idcategoria'] }}">{{ $categoria['nombre'] }}</option>
                         @endforeach
                     </select>
                 </div>
-
+              </div>
               <div class="row">
                 <label for="iddetalleserviciousuario" class="col-sm-2 col-form-label">iddetalleserviciousuario</label>
                 <div class="col-sm-7">
